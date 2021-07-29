@@ -1,12 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
-</head>
-<body>
-    
-</body>
+    <link href="./style.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Dosis"
+      rel="stylesheet"
+    />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <navbar>
+      <h1>My Library</h1>
+      <ul class="nav">
+        <li class="">
+          <button type="button" id="add-book-btn" class="addbook">
+            Add book
+          </button>
+        </li>
+        <li class="">
+          <button type="button" class="danger" id="clear-book-btn">
+            Clear all books
+          </button>
+        </li>
+      </ul>
+    </navbar>
+    <header>
+      <hero>
+        <div class="box-status">
+          <ul>
+            <li>
+              <h3>0</h3>
+              <p>Total Book</p>
+            </li>
+            <li>
+              <h3>0</h3>
+              <p>Read</p>
+            </li>
+            <li>
+              <h3>0</h3>
+              <p>Not Read</p>
+            </li>
+          </ul>
+        </div>
+      </hero>
+    </header>
+    <main>
+      <div class="container">
+        <div class="box">
+          <h1 class="text-center">Books</h1>
+          <div class="books-container">
+            <template id="card-book-template">
+              <div class="card-book">
+                <h1 class="name">The Last Wish</h1>
+                <p class="author">by <span>Andrzej Sapkowski </span></p>
+                <div class="detail">
+                  <p class="detail-length">Length: <span> 288 pages </span></p>
+                  <p class="detil-language">Language: <span> English </span></p>
+                  <p class="detil-language">Read ?: <span> Yes</span></p>
+                  <div class="btn-list">
+                    <button class="btn btn-read">Update</button>
+                    <button class="btn btn-remove">Remove</button>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+        <div class="box box-color">
+          <h4>
+            This is a simple library app where you can add and delete books,
+            change book status, see basic information and library statistics.
+          </h4>
+          <p class="text-center">
+            This app is a demo, all data is stored in localStorage.
+          </p>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="footer"></div>
+    </footer>
+    <template id="book-form-template">
+      <form class="book-form">
+        <h3>New Book</h3>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" name="title" id="title" />
+        </div>
+        <div class="form-group">
+          <label>Author</label>
+          <input type="text" name="author" id="author" />
+        </div>
+        <div class="form-group">
+          <label>Number of pages:</label>
+          <input type="number" name="pages" id="pages" />
+        </div>
+        <div class="form-group">
+          <label>Read the book? </label>
+          <select name="isRead">
+            <option value="y">Yes</option>
+            <option value="n">No</option>
+          </select>
+        </div>
+        <div class="form-grop">
+          <button class="btn" type="submit">Add book</button>
+          <button class="btn btn-remove" id="cancel-btn" type="button">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </template>
+    <template id="modal-template">
+      <div class="backdrop"></div>
+      <div class="modal"></div>
+    </template>
+  </body>
 </html>

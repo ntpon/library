@@ -151,6 +151,7 @@ hero {
   color: white;
   text-transform: uppercase;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .btn-remove {

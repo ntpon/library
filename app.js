@@ -6,7 +6,7 @@ class App {
 
     this.btnAddBook.addEventListener('click', this.showForm.bind(this));
     this.btnClearBook.addEventListener('click', this.clearLibrary.bind(this));
-    this.library = new Library([
+    this.library = new Library('001', [
       new Book('Clean Code', 'ART', 100, 'Thai', true),
       new Book('Clean Code v2', 'ART', 100, 'Thai', true),
     ]);
@@ -16,7 +16,9 @@ class App {
   render() {
     const containerBook = document.getElementById('books-container');
     containerBook.innerHTML = '';
-    this.library.books.forEach((book) => {
+
+    const books = this.library.getBooks();
+    books.forEach((book) => {
       const bookCard = document.importNode(this.bookTemplate.content, true);
       const name = bookCard.querySelector('.name');
       const author = bookCard.querySelector('.author span');
@@ -92,7 +94,7 @@ class App {
     }
   }
   clearLibrary() {
-    this.library = new Library();
+    this.library.clear();
     this.render();
   }
 
@@ -130,24 +132,39 @@ class App {
 }
 
 class Library {
-  constructor(books = []) {
-    this.books = books;
+  constructor(id, books = []) {
+    this.id = id;
+    this.books = localStorage.getItem(id)
+      ? JSON.parse(localStorage.getItem(id))
+      : [];
   }
   createBook(book) {
     this.books.push(book);
+    this.updateStorage();
   }
   updateBook(id) {
     const book = this.books.find((book) => {
       if (book.id === id) return book;
     });
     book.isRead = !book.isRead;
+    this.updateStorage();
   }
   removeBook(id) {
     this.books = this.books.filter((book) => {
       return book.id !== id;
     });
+    this.updateStorage();
   }
-  getBooks() {}
+  getBooks() {
+    return this.books;
+  }
+  updateStorage() {
+    localStorage.setItem(this.id, JSON.stringify(this.books));
+  }
+  clear() {
+    this.books = [];
+    localStorage.removeItem(this.id);
+  }
 }
 
 class Book {

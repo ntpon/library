@@ -33,15 +33,15 @@
         <div class="box-status">
           <ul>
             <li>
-              <h3>0</h3>
+              <h3 id="total-book">0</h3>
               <p>Total Book</p>
             </li>
             <li>
-              <h3>0</h3>
+              <h3 id="total-read">0</h3>
               <p>Read</p>
             </li>
             <li>
-              <h3>0</h3>
+              <h3 id="total-not-read">0</h3>
               <p>Not Read</p>
             </li>
           </ul>
@@ -52,7 +52,7 @@
       <div class="container">
         <div class="box">
           <h1 class="text-center">Books</h1>
-          <div class="books-container">
+          <div class="books-container" id="books-container">
             <template id="card-book-template">
               <div class="card-book">
                 <h1 class="name">The Last Wish</h1>
@@ -60,7 +60,7 @@
                 <div class="detail">
                   <p class="detail-length">Length: <span> 288 pages </span></p>
                   <p class="detil-language">Language: <span> English </span></p>
-                  <p class="detil-language">Read ?: <span> Yes</span></p>
+                  <p class="detil-read">Read ?: <span> Yes</span></p>
                   <div class="btn-list">
                     <button class="btn btn-read">Update</button>
                     <button class="btn btn-remove">Remove</button>
@@ -70,15 +70,16 @@
             </template>
           </div>
         </div>
-        <div class="box box-color">
-          <h4>
-            This is a simple library app where you can add and delete books,
-            change book status, see basic information and library statistics.
-          </h4>
-          <p class="text-center">
-            This app is a demo, all data is stored in localStorage.
-          </p>
-        </div>
+          <div class="box box-color box-empty"   id="book-empty">
+            <h4>
+              This is a simple library app where you can add and delete books,
+              change book status, see basic information and library statistics.
+            </h4>
+            <p class="text-center">
+              This app is a demo, all data is stored in localStorage.
+            </p>
+            <h3> Start By Click Add book button</h3></h3>
+          </div>
       </div>
     </main>
     <footer>
@@ -89,19 +90,23 @@
         <h3>New Book</h3>
         <div class="form-group">
           <label>Title</label>
-          <input type="text" name="title" id="title" />
+          <input type="text" name="title" id="title" required />
         </div>
         <div class="form-group">
           <label>Author</label>
-          <input type="text" name="author" id="author" />
+          <input type="text" name="author" id="author" required />
         </div>
         <div class="form-group">
-          <label>Number of pages:</label>
-          <input type="number" name="pages" id="pages" />
+          <label>Number of pages</label>
+          <input type="number" name="pages" id="pages" required />
+        </div>
+        <div class="form-group">
+          <label>Language</label>
+          <input type="text" name="language" id="language" required />
         </div>
         <div class="form-group">
           <label>Read the book? </label>
-          <select name="isRead">
+          <select name="isRead" id="isRead">
             <option value="y">Yes</option>
             <option value="n">No</option>
           </select>

@@ -20,6 +20,7 @@ class App {
     const books = this.library.getBooks();
     books.forEach((book) => {
       const bookCard = document.importNode(this.bookTemplate.content, true);
+      const bookMain = bookCard.querySelector('.card-book');
       const name = bookCard.querySelector('.name');
       const author = bookCard.querySelector('.author span');
       const length = bookCard.querySelector('.detail-length span');
@@ -27,6 +28,7 @@ class App {
       const isRead = bookCard.querySelector('.detil-read span');
       const btnRead = bookCard.querySelector('.btn-read');
       const btnRemove = bookCard.querySelector('.btn-remove');
+      bookMain.id = book.id;
       name.textContent = book.title;
       author.textContent = book.author;
       length.textContent = book.length;
@@ -107,17 +109,18 @@ class App {
     ) {
       return;
     }
-    this.library.createBook(
-      new Book(
-        this.formTitle.value,
-        this.formAuthor.value,
-        parseInt(this.formPages.value),
-        this.formLanguage.value,
-        this.formIsRead.value === 'y' ? true : false
-      )
+    const book = new Book(
+      this.formTitle.value,
+      this.formAuthor.value,
+      parseInt(this.formPages.value),
+      this.formLanguage.value,
+      this.formIsRead.value === 'y' ? true : false
     );
+    this.library.createBook(book);
     this.hideForm();
     this.render();
+    const bookElement = document.getElementById(book.id);
+    bookElement.classList.add('fadein');
   }
 
   removeBook(id) {

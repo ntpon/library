@@ -119,11 +119,13 @@ hero {
   justify-content: flex-start;
 }
 .card-book {
-  /* border: 0.5px solid #8d8741; */
   border-radius: 10px;
   background-color: whitesmoke;
   width: 23%;
   margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .name {
@@ -177,6 +179,8 @@ hero {
   display: flex;
   justify-content: center;
   align-items: center;
+  animation-name: fadein;
+  animation-duration: 1s;
 }
 
 .book-form {
@@ -188,6 +192,8 @@ hero {
   background-color: white;
   border: 5px solid black;
   border-radius: 10px;
+  animation-name: fadein;
+  animation-duration: 1s;
 }
 .book-form h3 {
   font-size: 36px;
@@ -224,4 +230,31 @@ form .btn {
   text-transform: uppercase;
   color: #8d8741;
   font-weight: bold;
+}
+
+.fadein {
+  animation-name: fadein;
+  animation-duration: 1s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 700px) {
+  navbar {
+    flex-direction: column;
+    height: 20%;
+  }
+  .card-book {
+    width: 43%;
+  }
+  .box-status {
+    font-size: 20px;
+  }
 }

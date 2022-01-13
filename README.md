@@ -1,6 +1,7 @@
 # Library
 
 A small Library app, created with HTML, CSS and JavaScript. The data is stored in localStorage.
+
 [Live Demo](https://ntpon.github.io/library/)
 
 ## Features
